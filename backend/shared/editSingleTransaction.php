@@ -10,6 +10,8 @@ $userId = mysqli_real_escape_string($link,$_GET["userId"]);
 $date = mysqli_real_escape_string($link,$_GET["date"]);
 $type = mysqli_real_escape_string($link,$_GET["type"]);
 
+require "../user/reloadAmount.php";
+
 $updateSingle = "UPDATE ".$prefix."transactions SET title='$title',source='$source',category='$category',amount=$amount,userId=$userId,date='$date',type='$type' WHERE id=$id";
 $link->query($updateSingle);
 $response = array("response"=>"updated");

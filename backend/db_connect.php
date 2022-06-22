@@ -1,7 +1,5 @@
 <?php
+ include "../php/config/Config.php";
 
-include "../php/config/Config.php";
 
 ?>
-
-

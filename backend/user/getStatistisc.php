@@ -8,13 +8,13 @@ $previous_month = date("m")-1;
 $theLatest_month = date("m")-2;
 //$userId = 2;
 
-$getoutgoingsFromThisMonth = "SELECT SUM(amount) as total FROM ".$prefix."transactions WHERE MONTH(date) = '$currentMonth' AND userId=$userId AND type='outgoing'";
-$getoutgoingsFromPreviousMonth = "SELECT SUM(amount) as total FROM ".$prefix."transactions WHERE MONTH(date) = '$previous_month' AND userId=$userId AND type='outgoing'";
-$getoutgoingsFromPTheLatest = "SELECT SUM(amount) as total FROM ".$prefix."transactions WHERE MONTH(date) = '$theLatest_month' AND userId=$userId AND type='outgoing'";
+$getoutgoingsFromThisMonth = "SELECT SUM(amount) as total FROM `".$prefix."transactions` WHERE MONTH(date) = '$currentMonth' AND userId=$userId AND type='outgoing'";
+$getoutgoingsFromPreviousMonth = "SELECT SUM(amount) as total FROM `".$prefix."transactions` WHERE MONTH(date) = '$previous_month' AND userId=$userId AND type='outgoing'";
+$getoutgoingsFromPTheLatest = "SELECT SUM(amount) as total FROM `".$prefix."transactions` WHERE MONTH(date) = '$theLatest_month' AND userId=$userId AND type='outgoing'";
 
-$getIncomesFromThisMonth = "SELECT SUM(amount) as total FROM ".$prefix."transactions WHERE MONTH(date) = '$currentMonth' AND userId=$userId AND type='income'";
-$getIncomesFromPreviousMonth = "SELECT SUM(amount) as total FROM ".$prefix."transactions WHERE MONTH(date) = '$previous_month' AND userId=$userId AND type='income'";
-$getIncomesFromTheLatest = "SELECT SUM(amount) as total FROM ".$prefix."transactions WHERE MONTH(date) = '$theLatest_month' AND userId=$userId AND type='income'";
+$getIncomesFromThisMonth = "SELECT SUM(amount) as total FROM `".$prefix."transactions` WHERE MONTH(date) = '$currentMonth' AND userId=$userId AND type='income'";
+$getIncomesFromPreviousMonth = "SELECT SUM(amount) as total FROM `".$prefix."transactions` WHERE MONTH(date) = '$previous_month' AND userId=$userId AND type='income'";
+$getIncomesFromTheLatest = "SELECT SUM(amount) as total FROM `".$prefix."transactions` WHERE MONTH(date) = '$theLatest_month' AND userId=$userId AND type='income'";
 
 $OutThisMonth = $link->query($getoutgoingsFromThisMonth);
 $OutPrev = $link->query($getoutgoingsFromPreviousMonth);
