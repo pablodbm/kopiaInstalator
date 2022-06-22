@@ -26,7 +26,7 @@ if (strlen($login) != 0 && strlen($name) != 0 && strlen($surname) != 0 && strlen
         $getUserId = "SELECT id FROM ".$prefix."users WHERE login='$login' && password='$password'";
         $userId = $mysqli->query($getUserId);
         $userId = $userId->fetch_assoc();
-        $createWallet = "INSERT INTO " . $prefix . "wallets (amount,userId,monthlyLimit) VALUES (0," . $userId["id"] . ",1000)";
+        $createWallet = "INSERT INTO " . $prefix . "wallets (amount,userId,monthlyLimit) VALUES (0," . $userId["id"] . ",10000)";
         $link->query($createWallet);
 
     } else {

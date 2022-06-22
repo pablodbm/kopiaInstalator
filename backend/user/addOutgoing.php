@@ -21,11 +21,21 @@ $transactions = $link->query($getTransactionsFromThisMonth);
 $transactionsAssoc = $transactions->fetch_assoc();
 $totalMontlyAmount = $transactionsAssoc["total"];
 
+$selectWalletAmount = "SELECT ".$prefix."amount FROM wallets WHERE usersid=$userId";
+$walletAmount = $mysqli->query($selectWalletAmount);
+$walletAmount = $walletAmount->fetch_assoc();
+$amount = $walletAmount["amount"];
+
+if($amount>-10000){
 //pobranie limitu portfela
 $getUserLimit = "SELECT monthlyLimit FROM ".$prefix."wallets WHERE userId=$userId";
 $limitResponse = $link->query($getUserLimit);
 $userLimit = $limitResponse->fetch_assoc();
 $limit = $userLimit["monthlyLimit"];
+
+
+
+
 
 if($totalMontlyAmount+$amount<=$limit){
     // $addoutgoing = "INSERT INTO outgoings (title,source,category,type,amount,userId,date) VALUES ('$title','$source','$category','$type',$amount,$userId,'$date')";
@@ -39,6 +49,9 @@ echo json_encode($response);
     $response = array("response"=>"monthlyLimit");
     echo json_encode($response);
 
+}
+}else{
+    echo json_encode(array("response"=>"kredyt"));
 }
 
 ?>
