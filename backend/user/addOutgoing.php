@@ -33,10 +33,6 @@ $limitResponse = $link->query($getUserLimit);
 $userLimit = $limitResponse->fetch_assoc();
 $limit = $userLimit["monthlyLimit"];
 
-
-
-
-
 if($totalMontlyAmount+$amount<=$limit){
     // $addoutgoing = "INSERT INTO outgoings (title,source,category,type,amount,userId,date) VALUES ('$title','$source','$category','$type',$amount,$userId,'$date')";
 $addoutgoing = "INSERT INTO ".$prefix."transactions (title,source,category,amount,userId,date,type) VALUES ('$title','$source','$category',$amount,$userId,'$date','outgoing')";
